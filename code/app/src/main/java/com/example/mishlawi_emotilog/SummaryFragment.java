@@ -38,7 +38,7 @@ public class SummaryFragment extends Fragment {
 
         dailyLogSummaries = SummaryFragmentArgs.fromBundle(getArguments()).getLogSummary();
 
-        ArrayList<DailyLogSummary> logsArray = new ArrayList<DailyLogSummary>(Arrays.asList(dailyLogSummaries));
+        ArrayList<DailyLogSummary> logsArray = new ArrayList<>(Arrays.asList(dailyLogSummaries));
 
         SummaryArrayAdapter adapter = new SummaryArrayAdapter(getContext(), logsArray);
 
