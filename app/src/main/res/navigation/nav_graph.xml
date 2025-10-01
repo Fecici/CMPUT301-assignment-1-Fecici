@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment">
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.example.mishlawi_emotilog.MainFragment"
+        android:label="Main"
+        tools:layout="@layout/main_fragment">
+
+        <action
+            android:id="@+id/action_Main_to_Logs"
+            app:destination="@id/LogFragment" />
+        <action
+            android:id="@+id/action_Main_to_Summary"
+            app:destination="@+id/SummaryFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/LogFragment"
+        android:name="com.example.mishlawi_emotilog.LogFragment"
+        android:label="Logs"
+        tools:layout="@layout/log_fragment">
+
+        <action
+            android:id="@+id/action_Logs_to_main"
+            app:destination="@id/MainFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/SummaryFragment"
+        android:name="com.example.mishlawi_emotilog.SummaryFragment"
+        android:label="Summary"
+        tools:layout="@layout/summary_fragment">
+
+        <action
+            android:id="@+id/action_Summary_to_main"
+            app:destination="@id/MainFragment"
+            />
+
+    </fragment>
+</navigation>

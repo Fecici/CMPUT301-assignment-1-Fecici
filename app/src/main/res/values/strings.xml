@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">mishlawi-EmotiLog</string>
+    <string name="happy">😀</string>
+    <string name="see_logs">See Logs</string>
+    <string name="summary">Summary</string>
+    <string name="content">🙂</string>
+    <string name="angry">😡</string>
+    <string name="sad">😢</string>
+    <string name="annoyed">🙄</string>
+    <string name="disappointed">😒</string>
+    <string name="bawling">😭</string>
+    <string name="neutral">😐</string>
+    <string name="scared">😨</string>
 </resources>
