@@ -17,14 +17,15 @@ public class Log implements Parcelable {
     private String timestamp;
     private String datestamp;
     private String fullDate;
+    private Date date;
     public Log(Feeling feeling) {
         this.feeling = feeling;
 
-        Date date = new Date();
+        date = new Date();
 
-        SimpleDateFormat fullDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat fullDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         fullDate = fullDateFormat.format(date);
         timestamp = timeFormat.format(date);
@@ -40,6 +41,7 @@ public class Log implements Parcelable {
     public String getFullDate () {return this.fullDate; }
     public String getTimestamp() {return this.timestamp;}
     public String getDatestamp() {return this.datestamp;}
+    public Date getDate() {return this.date;}
 
     protected Log(Parcel in) {
         // Read fields back in same order you wrote them

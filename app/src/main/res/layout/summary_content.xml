@@ -5,4 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/summary_day_view"
+        android:layout_width="178dp"
+        android:layout_height="101dp"
+        android:background="#280F0F"
+        android:text="day"
+        android:textColor="#E5EFD0"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ListView
+        android:id="@+id/summary_emote_list"
+        android:layout_width="238dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="1dp"
+        android:background="#6B3F3F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/summary_day_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

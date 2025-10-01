@@ -13,10 +13,10 @@ import androidx.annotation.Nullable;
 import java.net.ContentHandler;
 import java.util.ArrayList;
 
-public class SummaryArrayAdapter extends ArrayAdapter<Log> {
+public class SummaryArrayAdapter extends ArrayAdapter<DailyLogSummary> {
 
-    public SummaryArrayAdapter(Context context, ArrayList<Log> logs) {
-        super(context, 0, logs);
+    public SummaryArrayAdapter(Context context, ArrayList<DailyLogSummary> logSummary) {
+        super(context, 0, logSummary);
     }
 
     @NonNull
@@ -34,6 +34,7 @@ public class SummaryArrayAdapter extends ArrayAdapter<Log> {
         }
 
         // TODO: format for summary
+        // use summarylistcontentarrayadapter for sublist
 
 
         return view;
