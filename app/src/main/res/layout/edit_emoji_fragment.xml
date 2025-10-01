@@ -10,8 +10,8 @@
 
     <ListView
         android:id="@+id/edit_emoji_list"
-        android:layout_width="161dp"
-        android:layout_height="100dp"
+        android:layout_width="89dp"
+        android:layout_height="101dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"

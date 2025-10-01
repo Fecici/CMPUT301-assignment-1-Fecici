@@ -9,6 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.example.mishlawi_emotilog.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +53,23 @@ public class MainActivity extends AppCompatActivity implements EditEmojiFragment
             new Feeling("content", "\uD83D\uDE42"),
     };
 
+    private AppBarConfiguration appBarConfiguration;
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.toolbar);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements EditEmojiFragment
 
         // we call these buttons 1-9 because they are customizable. They are ordered as if on a keypad
         Button editEmojiButton = findViewById(R.id.button_change_emoji);
-        Button summaryButton = findViewById(R.id.button_summary);
+
 
         // keep track of the feelings in an array ordered the same.
         emojiButtons = new Button[]{
@@ -84,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements EditEmojiFragment
                 @Override
                 public void onClick(View v) {
                     logs.addLog(new Log(currentFeelings[finalI]));  // assign each button to a mood in the array.
+                    System.out.println("Button " + (finalI + 1) + " pressed");
                 }
             });
         }

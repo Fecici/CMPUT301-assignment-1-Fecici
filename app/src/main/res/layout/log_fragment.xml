@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/log_list"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    android:orientation="vertical">
 
-</ListView>
+    <Button
+        android:id="@+id/log_to_main_button"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_weight="1"
+        android:backgroundTint="#01579B"
+        android:text="Back" />
+
+    <ListView
+        android:id="@+id/log_list"
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        android:background="#000000"
+
+        />
+</LinearLayout>
