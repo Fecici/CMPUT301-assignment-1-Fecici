@@ -44,14 +44,14 @@ public class Log implements Parcelable {
     public Date getDate() {return this.date;}
 
     protected Log(Parcel in) {
-        // Read fields back in same order you wrote them
+
         feeling = in.readParcelable(Feeling.class.getClassLoader());
         timestamp = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        // Write fields in order
+
         dest.writeParcelable(feeling, flags);
         dest.writeString(timestamp);
     }

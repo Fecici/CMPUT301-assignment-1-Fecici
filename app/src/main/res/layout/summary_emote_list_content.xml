@@ -6,8 +6,8 @@
 
     <TextView
         android:id="@+id/summary_content_emote"
-        android:layout_width="75dp"
-        android:layout_height="85dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="#5B3636"
         android:text="TextView"
@@ -16,8 +16,8 @@
 
     <TextView
         android:id="@+id/summary_content_count"
-        android:layout_width="279dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="#383838"
         android:text="TextView"

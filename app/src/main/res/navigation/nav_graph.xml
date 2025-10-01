@@ -46,6 +46,9 @@
             android:id="@+id/action_Summary_to_main"
             app:destination="@id/MainFragment"
             />
+        <argument
+            android:name="logSummary"
+            app:argType="com.example.mishlawi_emotilog.DailyLogSummary[]"/>
 
     </fragment>
 </navigation>

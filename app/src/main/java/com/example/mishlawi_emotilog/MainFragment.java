@@ -15,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.mishlawi_emotilog.databinding.MainFragmentBinding;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -83,7 +84,12 @@ public class MainFragment extends Fragment implements EditEmojiFragment.EditEmoj
             @Override
             public void onClick(View v) {
                 NavDirections action =
-                        MainFragmentDirections.actionMainToSummary();
+                        null;
+                try {
+                    action = MainFragmentDirections.actionMainToSummary(logs.getDailySummary().toArray(new DailyLogSummary[0]));
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
                 NavHostFragment.findNavController(MainFragment.this).navigate(action);
             }
         });
@@ -116,6 +122,8 @@ public class MainFragment extends Fragment implements EditEmojiFragment.EditEmoj
                 @Override
                 public void onClick(View v) {
                     logs.addLog(new Log(currentFeelings[finalI]));  // assign each button to a mood in the array.
+                    Toast myToast = Toast.makeText(getActivity(), "Logged " + currentFeelings[finalI].getEmoji() + "!", Toast.LENGTH_SHORT);
+                    myToast.show();
                     System.out.println("Button " + (finalI + 1) + " pressed");
                 }
             });
