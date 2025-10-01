@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,13 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.mishlawi_emotilog.databinding.LogFragmentBinding;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class LogFragment extends Fragment {
     private LogFragmentBinding binding;
+    private Log[] logs;
 
     @Override
     public View onCreateView(
@@ -31,6 +35,15 @@ public class LogFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        logs = LogFragmentArgs.fromBundle(getArguments()).getLogs();
+
+        ListView logList = view.findViewById(R.id.log_list);
+
+        ArrayList<Log> logArray = new ArrayList<Log>(Arrays.asList(logs));
+
+        LogArrayAdapter adapter = new LogArrayAdapter(getContext(), logArray);
+        logList.setAdapter(adapter);
 
         Button backButton = view.findViewById(R.id.log_to_main_button);
         backButton.setOnClickListener(v ->

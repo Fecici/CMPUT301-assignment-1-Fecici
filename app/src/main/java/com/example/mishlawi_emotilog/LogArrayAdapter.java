@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.jetbrains.annotations.NonBlocking;
-
 import java.util.ArrayList;
 
 public class LogArrayAdapter extends ArrayAdapter<Log> {
@@ -34,6 +32,7 @@ public class LogArrayAdapter extends ArrayAdapter<Log> {
         }
 
         Log log = getItem(position);
+        assert log != null;
         String datetime = log.getFullDate();
         Feeling feeling = log.getFeeling();
 

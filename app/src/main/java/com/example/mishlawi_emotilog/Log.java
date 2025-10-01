@@ -1,5 +1,8 @@
 package com.example.mishlawi_emotilog;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 //import java.time.LocalDateTime;
@@ -8,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 //import java.time.format.DateTimeFormatter;
 
-public class Log {
+public class Log implements Parcelable {
 
     private Feeling feeling;
     private String timestamp;
@@ -37,4 +40,34 @@ public class Log {
     public String getFullDate () {return this.fullDate; }
     public String getTimestamp() {return this.timestamp;}
     public String getDatestamp() {return this.datestamp;}
+
+    protected Log(Parcel in) {
+        // Read fields back in same order you wrote them
+        feeling = in.readParcelable(Feeling.class.getClassLoader());
+        timestamp = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        // Write fields in order
+        dest.writeParcelable(feeling, flags);
+        dest.writeString(timestamp);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Log> CREATOR = new Creator<Log>() {
+        @Override
+        public Log createFromParcel(Parcel in) {
+            return new Log(in);
+        }
+
+        @Override
+        public Log[] newArray(int size) {
+            return new Log[size];
+        }
+    };
 }

@@ -21,61 +21,62 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // https://unicode.org/emoji/charts/full-emoji-list.html   <----- emojis list
-public class MainActivity extends AppCompatActivity implements EditEmojiFragment.EditEmojiDialogListener {
+public class MainActivity extends AppCompatActivity {
 
-    private LogContainer logs = new LogContainer();
-    private Button[] emojiButtons;
-
-    private Feeling[] default_feelings = {
-
-            new Feeling("sad", "\uD83D\uDE22"),
-            new Feeling("annoyed", "\uD83D\uDE44"),
-            new Feeling("disappointed", "\uD83D\uDE12"),
-            new Feeling("bawling", "\uD83D\uDE2D"),
-            new Feeling("happy", "\uD83D\uDE03"),
-            new Feeling("neutral", "\uD83D\uDE10"),
-            new Feeling("angry", "\uD83D\uDE21"),
-            new Feeling("scared", "\uD83D\uDE28"),
-            new Feeling("content", "\uD83D\uDE42"),
-    };
-
-    // since there are always 9 feelings at play at a time, we track current feelings here for customizability
-    private Feeling[] currentFeelings = {
-
-            new Feeling("sad", "\uD83D\uDE22"),
-            new Feeling("annoyed", "\uD83D\uDE44"),
-            new Feeling("disappointed", "\uD83D\uDE12"),
-            new Feeling("bawling", "\uD83D\uDE2D"),
-            new Feeling("happy", "\uD83D\uDE03"),
-            new Feeling("neutral", "\uD83D\uDE10"),
-            new Feeling("angry", "\uD83D\uDE21"),
-            new Feeling("scared", "\uD83D\uDE28"),
-            new Feeling("content", "\uD83D\uDE42"),
-    };
+//    private static LogContainer logs = new LogContainer();
+//    private Button[] emojiButtons;
+//
+//    private Feeling[] default_feelings = {
+//
+//            new Feeling("sad", "\uD83D\uDE22"),
+//            new Feeling("annoyed", "\uD83D\uDE44"),
+//            new Feeling("disappointed", "\uD83D\uDE12"),
+//            new Feeling("bawling", "\uD83D\uDE2D"),
+//            new Feeling("happy", "\uD83D\uDE03"),
+//            new Feeling("neutral", "\uD83D\uDE10"),
+//            new Feeling("angry", "\uD83D\uDE21"),
+//            new Feeling("scared", "\uD83D\uDE28"),
+//            new Feeling("content", "\uD83D\uDE42"),
+//    };
+//
+//    // since there are always 9 feelings at play at a time, we track current feelings here for customizability
+//    private Feeling[] currentFeelings = {
+//
+//            new Feeling("sad", "\uD83D\uDE22"),
+//            new Feeling("annoyed", "\uD83D\uDE44"),
+//            new Feeling("disappointed", "\uD83D\uDE12"),
+//            new Feeling("bawling", "\uD83D\uDE2D"),
+//            new Feeling("happy", "\uD83D\uDE03"),
+//            new Feeling("neutral", "\uD83D\uDE10"),
+//            new Feeling("angry", "\uD83D\uDE21"),
+//            new Feeling("scared", "\uD83D\uDE28"),
+//            new Feeling("content", "\uD83D\uDE42"),
+//    };
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setSupportActionBar(findViewById(R.id.toolbar));
 
-        setSupportActionBar(binding.toolbar);
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.nav_host_fragment_content_main);
+        NavController navController = navHostFragment.getNavController();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+/*
         // we call these buttons 1-9 because they are customizable. They are ordered as if on a keypad
         Button editEmojiButton = findViewById(R.id.button_change_emoji);
 
@@ -114,11 +115,11 @@ public class MainActivity extends AppCompatActivity implements EditEmojiFragment
                 ArrayList<Feeling> feelingArray = new ArrayList<Feeling>(Arrays.asList(currentFeelings));
                 new EditEmojiFragment(feelingArray).show(getSupportFragmentManager(), "Edit Emoji");
             }
-        });
+        });*/
 
 
     }
-
+/*
     @Override
     public void editFeeling(int position, String mood, String emoji) {
 
@@ -132,4 +133,8 @@ public class MainActivity extends AppCompatActivity implements EditEmojiFragment
         }
     }
 
+    public static LogContainer getLogs() {
+        return logs;
+    }
+*/
 }

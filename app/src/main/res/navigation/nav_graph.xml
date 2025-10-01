@@ -29,6 +29,10 @@
             android:id="@+id/action_Logs_to_main"
             app:destination="@id/MainFragment"
             />
+        <argument
+            android:name="logs"
+            app:argType="com.example.mishlawi_emotilog.Log[]"
+            />
 
     </fragment>
 
