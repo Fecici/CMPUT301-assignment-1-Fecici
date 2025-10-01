@@ -40,7 +40,7 @@ public class LogFragment extends Fragment {
 
         ListView logList = view.findViewById(R.id.log_list);
 
-        ArrayList<Log> logArray = new ArrayList<Log>(Arrays.asList(logs));
+        ArrayList<Log> logArray = new ArrayList<Log>(Arrays.asList(logs));L
 
         LogArrayAdapter adapter = new LogArrayAdapter(getContext(), logArray);
         logList.setAdapter(adapter);
