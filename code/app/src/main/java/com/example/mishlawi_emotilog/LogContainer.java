@@ -21,22 +21,38 @@ public class LogContainer {
 
     public ArrayList<Log> getAllLogs() {return this.allLogs;}
 
-    private void updateDailySummary() throws ParseException {
-
+    private void updateDailySummary() {
         this.dailySummary.clear();
+
+        if (allLogs.isEmpty()) return;
+
         ArrayList<Log> temp = new ArrayList<>();
-        int i = 0;
+        Date currentDate = allLogs.get(0).getDate();
+
         for (Log log : allLogs) {
             Date date = log.getDate();
-            temp.add(log);
 
-            if (i > 0 && (date.after(allLogs.get(i).getDate()))) {
-
-                this.dailySummary.add(new DailyLogSummary(date, temp));
+            // If same day, keep adding
+            if (isSameDay(date, currentDate)) {
+                temp.add(log);
+            } else {
+                // new day
+                this.dailySummary.add(new DailyLogSummary(currentDate, new ArrayList<>(temp)));
                 temp.clear();
+                temp.add(log);
+                currentDate = date;
             }
-            i++;
         }
+
+        // Add the final batch
+        if (!temp.isEmpty()) {
+            this.dailySummary.add(new DailyLogSummary(currentDate, new ArrayList<>(temp)));
+        }
+    }
+
+    private boolean isSameDay(Date d1, Date d2) {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        return fmt.format(d1).equals(fmt.format(d2));
     }
 
     public ArrayList<DailyLogSummary> getDailySummary() throws ParseException {
